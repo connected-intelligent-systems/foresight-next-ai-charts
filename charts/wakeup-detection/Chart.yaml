@@ -1,0 +1,6 @@
+apiVersion: v2
+name: wakeup-detection
+description: A Helm chart for Kubernetes deployment of the wakeup detection service
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
