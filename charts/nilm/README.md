@@ -9,14 +9,16 @@ A Helm chart for Kubernetes deployment of the NILM service
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| appliance | string | `"dishwasher"` | Sets the appliance type for the NILM service. One of: "dishwasher", "fridge_freeze", "washing_machine", "kettle", "microwave", "tv" |
 | autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
+| household | string | `"5"` | house hold |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/connected-intelligent-systems/foresight-next-images/nilm-general-service"` |  |
-| image.tag | string | `"may272024"` |  |
+| image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -32,7 +34,7 @@ A Helm chart for Kubernetes deployment of the NILM service
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.port | int | `5000` |  |
+| service.port | int | `8000` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |

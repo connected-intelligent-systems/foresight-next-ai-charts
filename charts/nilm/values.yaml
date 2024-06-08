@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/connected-intelligent-systems/foresight-next-images/nilm-general-service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "may272024"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 5000
+  port: 8000
 
 ingress:
   enabled: false
@@ -80,3 +80,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# -- Sets the appliance type for the NILM service. One of: "dishwasher", "fridge_freeze", "washing_machine", "kettle", "microwave", "tv"
+appliance: "dishwasher"
+
+# -- Set the household of the pretrained NILM model. One of: "5", "9"
+household: "5"

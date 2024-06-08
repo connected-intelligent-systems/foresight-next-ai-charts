@@ -1,3 +1,12 @@
+{{- $valid_appliances := dict "dishwasher" "DW" "fridge-freezer" "FRDFZ" "kettle" "KTL" "microwave" "MW" "tv" "TV" "washing-machine" "WM" }}
+{{- $appliance := index $valid_appliances .Values.appliance }}
+{{- if not (hasKey $valid_appliances .Values.appliance) }}
+{{- fail (printf "Invalid appliance: %s" .Values.appliance) }}
+{{- end }}
+{{- $valid_households := list "5" "9" -}}
+{{- if not (has (toString .Values.household) $valid_households) }}
+{{- fail (printf "Invalid household: %s" .Values.household) }}
+{{- end }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -45,6 +54,11 @@ spec:
             httpGet:
               path: /
               port: http
+          env:
+            - name: APPLIANCE
+              value: "{{ $appliance }}"
+            - name: hid
+              value: "{{ .Values.household }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
