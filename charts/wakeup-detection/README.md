@@ -15,8 +15,8 @@ A Helm chart for Kubernetes deployment of the wakeup detection service
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"ghcr.io/connected-intelligent-systems/foresight-next-images/wakeup-detection"` |  |
-| image.tag | string | `"latest"` |  |
+| image.repository | string | `"ghcr.io/connected-intelligent-systems/foresight-next-ai-services/wakeup-detection"` |  |
+| image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
@@ -32,7 +32,7 @@ A Helm chart for Kubernetes deployment of the wakeup detection service
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.port | int | `5001` |  |
+| service.port | int | `8000` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |

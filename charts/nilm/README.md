@@ -1,6 +1,6 @@
 # nilm
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes deployment of the NILM service
 
@@ -15,10 +15,10 @@ A Helm chart for Kubernetes deployment of the NILM service
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
-| household | string | `"5"` | house hold |
+| household | string | `"5"` | Set the household of the pretrained NILM model. One of: "5", "9" |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"ghcr.io/connected-intelligent-systems/foresight-next-images/nilm-general-service"` |  |
-| image.tag | string | `"latest"` |  |
+| image.repository | string | `"ghcr.io/connected-intelligent-systems/foresight-next-ai-services/nilm"` |  |
+| image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
