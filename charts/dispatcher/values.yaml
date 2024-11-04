@@ -61,17 +61,6 @@ tolerations: []
 
 affinity: {}
 
-# namespace = uuid.UUID("799a6a67-083b-4411-a49f-c8f1acda2ff1")
-# broker_address = os.environ.get("KAFKA_BROKER_ADDRESS", "localhost:9094")
-# consumer_group = os.environ.get("KAFKA_CONSUMER_GROUP", "disaggregation")
-# auto_offset_reset = os.environ.get("KAFKA_AUTO_OFFSET_RESET", "earliest")
-# input_topic_name = os.environ.get("KAFKA_INPUT_TOPIC", "output")
-# mqtt_host = os.environ.get("MQTT_HOST", "localhost")
-# mqtt_port = os.environ.get("MQTT_PORT", 1883)
-# mqtt_username = os.environ.get("MQTT_USERNAME", "admin")
-# mqtt_password = os.environ.get("MQTT_PASSWORD", None)
-# mqtt_enable_tls = os.environ.get("MQTT_ENABLE_TLS", "false").lower() == "true"
-
 kafka:
   broker_address: "localhost:9094"
   consumer_group: "aggregatgor"
