@@ -67,5 +67,5 @@ kafka:
   auto_offset_reset: "earliest"
   input_topic_name: "power-data"
   output_topic_name: "aggregated-power-data"
-  duration_ms: 3840000
-  step_ms: 1200000
+  duration_ms: "3840000"
+  step_ms: "1200000"

@@ -48,14 +48,6 @@ spec:
               value: "{{ .Values.kafka.duration_ms }}"
             - name: WINDOW_STEP_MS
               value: "{{ .Values.kafka.step_ms }}"
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
