@@ -3,6 +3,16 @@ entries:
   aggregator:
   - apiVersion: v2
     appVersion: v0.0.2
+    created: "2024-11-04T12:14:52.255620125Z"
+    description: A Helm chart for Kubernetes
+    digest: 43081b483acc81eb78a87f43a90461afb1463e56074b558cbf9130faf6070c84
+    name: aggregator
+    type: application
+    urls:
+    - https://github.com/connected-intelligent-systems/foresight-next-ai-charts/releases/download/aggregator-0.1.1/aggregator-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.0.2
     created: "2024-11-04T11:31:50.012290326Z"
     description: A Helm chart for Kubernetes
     digest: dfedb686bcd8b437976068d322088cd169dd622c96b18c4ea508c7498947121f
@@ -44,4 +54,4 @@ entries:
     urls:
     - https://github.com/connected-intelligent-systems/foresight-next-ai-charts/releases/download/wakeup-detection-0.1.0/wakeup-detection-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-04T11:31:50.012297429Z"
+generated: "2024-11-04T12:14:52.255653847Z"
