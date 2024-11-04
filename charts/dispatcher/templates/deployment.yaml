@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dispatcher.fullname" . }}
+  labels:
+    {{- include "dispatcher.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "dispatcher.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "dispatcher.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "dispatcher.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: KAFKA_BROKER_ADDRESS
+              value: {{ .Values.kafka.broker_address }}
+            - name: KAFKA_CONSUMER_GROUP
+              value: {{ .Values.kafka.consumer_group }}
+            - name: KAFKA_AUTO_OFFSET_RESET
+              value: {{ .Values.kafka.auto_offset_reset }}
+            - name: KAFKA_INPUT_TOPIC
+              value: {{ .Values.kafka.input_topic_name }}
+            - name: MQTT_HOST
+              value: {{ .Values.mqtt.host }}
+            - name: MQTT_PORT
+              value: {{ .Values.mqtt.port }}
+            - name: MQTT_USERNAME
+              value: {{ .Values.mqtt.username }}
+            - name: MQTT_PASSWORD
+              value: {{ .Values.mqtt.password }}
+            - name: MQTT_ENABLE_TLS
+              value: {{ .Values.mqtt.enable_tls }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

@@ -1,0 +1,86 @@
+# Default values for dispatcher.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/connected-intelligent-systems/foresight-next-ai-tools/dispatcher
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# namespace = uuid.UUID("799a6a67-083b-4411-a49f-c8f1acda2ff1")
+# broker_address = os.environ.get("KAFKA_BROKER_ADDRESS", "localhost:9094")
+# consumer_group = os.environ.get("KAFKA_CONSUMER_GROUP", "disaggregation")
+# auto_offset_reset = os.environ.get("KAFKA_AUTO_OFFSET_RESET", "earliest")
+# input_topic_name = os.environ.get("KAFKA_INPUT_TOPIC", "output")
+# mqtt_host = os.environ.get("MQTT_HOST", "localhost")
+# mqtt_port = os.environ.get("MQTT_PORT", 1883)
+# mqtt_username = os.environ.get("MQTT_USERNAME", "admin")
+# mqtt_password = os.environ.get("MQTT_PASSWORD", None)
+# mqtt_enable_tls = os.environ.get("MQTT_ENABLE_TLS", "false").lower() == "true"
+
+kafka:
+  broker_address: "localhost:9094"
+  consumer_group: "aggregatgor"
+  auto_offset_reset: "earliest"
+  input_topic_name: "aggregated-power-data"
+  
+mqtt: 
+  host: "localhost"
+  port: 1883
+  username: "admin"
+  password: ""
+  enable_tls: false
