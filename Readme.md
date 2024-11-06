@@ -1,4 +1,4 @@
-# foresight-next-ai-charts
+# ai charts
 
 Contains helm charts for all ai services developed by DFKI. 
 
